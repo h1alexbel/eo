@@ -196,7 +196,7 @@
         <xsl:value-of select="eo:eol(0)"/>
         <xsl:text>import org.eolang.*;</xsl:text>
         <xsl:value-of select="eo:eol(0)"/>
-        <xsl:apply-templates select="/object/metas/meta[head='tests']" mode="head"/>
+<!--        <xsl:apply-templates select="/object/metas/meta[head='tests']" mode="head"/>-->
         <xsl:apply-templates select="." mode="body"/>
       </xsl:element>
     </xsl:copy>
@@ -217,7 +217,7 @@
   </xsl:template>
   <!-- Class body  -->
   <xsl:template match="class" mode="body">
-    <xsl:apply-templates select="xmir"/>
+<!--    <xsl:apply-templates select="xmir"/>-->
     <xsl:value-of select="eo:eol(0)"/>
     <xsl:text>@XmirObject(name = "</xsl:text>
     <xsl:value-of select="@name"/>
@@ -255,6 +255,7 @@
   </xsl:template>
   <!-- Nested classes for anonymous abstract objects  -->
   <xsl:template match="nested">
+    <!-- name resolution  -->
     <xsl:variable name="name" select="eo:loc-to-class(eo:escape-plus(@loc))"/>
     <xsl:value-of select="eo:eol(1)"/>
     <xsl:text>private static class </xsl:text>
@@ -690,6 +691,7 @@
     <xsl:value-of select="text()"/>
     <xsl:text>));</xsl:text>
   </xsl:template>
+  <!-- 1. If test attribute is present in the //o -> JUnit imports, create @Nested *Test class -->
   <!-- Class for tests -->
   <xsl:template match="class" mode="tests">
     <xsl:value-of select="eo:eol(1)"/>
