@@ -12,7 +12,6 @@ package EOorg.EOeolang.EOfs; // NOPMD
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.eolang.Atom;
-import org.eolang.Attr;
 import org.eolang.Data;
 import org.eolang.Dataized;
 import org.eolang.PhDefault;

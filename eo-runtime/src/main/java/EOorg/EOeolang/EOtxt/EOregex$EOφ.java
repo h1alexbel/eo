@@ -15,7 +15,6 @@ import java.io.ObjectOutputStream;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import org.eolang.Atom;
-import org.eolang.Attr;
 import org.eolang.Data;
 import org.eolang.Dataized;
 import org.eolang.ExFailure;

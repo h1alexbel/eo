@@ -10,7 +10,6 @@
 package EOorg.EOeolang; // NOPMD
 
 import org.eolang.Atom;
-import org.eolang.Attr;
 import org.eolang.BytesOf;
 import org.eolang.Dataized;
 import org.eolang.PhDefault;
