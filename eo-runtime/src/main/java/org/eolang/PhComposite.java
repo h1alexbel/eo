@@ -37,7 +37,7 @@ public final class PhComposite implements Phi {
 
     @Override
     public Phi copy() {
-        return new PhComposite(this.argument.copy(), this.expr);
+        return new PhComposite(this.argument, this.expr);
     }
 
     @Override

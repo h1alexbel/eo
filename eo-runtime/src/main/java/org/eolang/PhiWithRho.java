@@ -42,7 +42,7 @@ final class PhiWithRho implements Phi {
     public Phi copy() {
         return new PhiWithRho(
             this.original.copy(),
-            this.rho.copy()
+            this
         );
     }
 
