@@ -43,7 +43,7 @@ final class AtWithRho implements Attr {
         Phi ret = this.original.get();
         if (!ret.hasRho()) {
             ret = ret.copy();
-            ret.put(Attr.RHO, this.rho);
+            ret.put(Phi.RHO, this.rho);
         }
         return ret;
     }

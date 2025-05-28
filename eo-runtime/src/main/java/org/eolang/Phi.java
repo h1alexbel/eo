@@ -28,6 +28,21 @@ public interface Phi extends Data {
     Phi Φ = new PhPackage(PhPackage.GLOBAL);
 
     /**
+     * Lambda attribute.
+     */
+    String LAMBDA = "λ";
+
+    /**
+     * Phi attribute.
+     */
+    String PHI = "φ";
+
+    /**
+     * Rho attribute.
+     */
+    String RHO = "ρ";
+
+    /**
      * Make a copy, leaving it at the same parent.
      *
      * @return A copy

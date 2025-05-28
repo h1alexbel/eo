@@ -11,20 +11,6 @@ package org.eolang;
  * @since 0.1
  */
 public interface Attr {
-    /**
-     * Lambda attribute.
-     */
-    String LAMBDA = "λ";
-
-    /**
-     * Phi attribute.
-     */
-    String PHI = "φ";
-
-    /**
-     * Rho attribute.
-     */
-    String RHO = "ρ";
 
     /**
      * Make a copy of it.

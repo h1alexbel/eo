@@ -96,7 +96,7 @@ final class EOmallocTest {
         Dummy() {
             this.add("m", new AtVoid("m"));
             this.add(
-                Attr.PHI,
+                Phi.PHI,
                 new AtComposite(
                     this,
                     rho -> {
@@ -127,7 +127,7 @@ final class EOmallocTest {
         ErrorDummy() {
             this.add("m", new AtVoid("m"));
             this.add(
-                Attr.PHI,
+                Phi.PHI,
                 new AtComposite(
                     this,
                     rho -> {

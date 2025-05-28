@@ -126,7 +126,7 @@ final class EOtryTest {
         MainWithCounter() {
             super();
             this.add(
-                Attr.PHI,
+                Phi.PHI,
                 new AtComposite(
                     this,
                     rho -> {

@@ -34,7 +34,7 @@ public final class EOfile$EOexists extends PhDefault implements Atom {
             Files.exists(
                 Paths.get(
                     new Dataized(
-                        this.take(Attr.RHO).take("path")
+                        this.take(Phi.RHO).take("path")
                     ).asString()
                 )
             )

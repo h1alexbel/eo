@@ -43,7 +43,7 @@ public final class EObytes$EOeq extends PhDefault implements Atom {
                 new Dataized(
                     this.take("b").take("as-bytes")
                 ).take(),
-                new Dataized(this.take(Attr.RHO)).take()
+                new Dataized(this.take(Phi.RHO)).take()
             )
         );
     }

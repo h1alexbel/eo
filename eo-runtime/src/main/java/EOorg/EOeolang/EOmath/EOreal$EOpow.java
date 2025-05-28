@@ -38,7 +38,7 @@ public final class EOreal$EOpow extends PhDefault implements Atom {
     public Phi lambda() {
         return new ToPhi(
             Math.pow(
-                new Dataized(this.take(Attr.RHO)).asNumber(),
+                new Dataized(this.take(Phi.RHO)).asNumber(),
                 new Dataized(this.take("x")).asNumber()
             )
         );
