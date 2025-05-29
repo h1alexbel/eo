@@ -32,7 +32,7 @@ final class PhPackageTest {
     @Test
     void copiesObject() {
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             Phi.Φ.take("org.eolang.seq"),
             Matchers.not(
                 Matchers.equalTo(
@@ -71,7 +71,11 @@ final class PhPackageTest {
         final Phi seq = eolang.take("seq");
         MatcherAssert.assertThat(
 <<<<<<< HEAD
+<<<<<<< HEAD
             PhCompositeTest.TO_ADD_MESSAGE,
+=======
+            AtCompositeTest.TO_ADD_MESSAGE,
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
             seq.take(Phi.RHO),
 =======
             AtCompositeTest.TO_ADD_MESSAGE,
@@ -84,7 +88,7 @@ final class PhPackageTest {
     @Test
     void findsLongClass() {
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             Phi.Φ.take("org.eolang.bytes$eq").copy(),
             Matchers.instanceOf(Phi.class)
         );
@@ -96,7 +100,7 @@ final class PhPackageTest {
         final Phi parent = new PhPackage(PhPackageTest.DEFAULT_PACKAGE);
         final Phi actual = parent.take(attribute);
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             actual,
             Matchers.instanceOf(expected)
         );
@@ -107,7 +111,7 @@ final class PhPackageTest {
         Assertions.assertThrows(
             ExFailure.class,
             () -> new PhPackage(PhPackageTest.DEFAULT_PACKAGE).take("failed"),
-            PhCompositeTest.TO_ADD_MESSAGE
+            AtCompositeTest.TO_ADD_MESSAGE
         );
     }
 
@@ -133,7 +137,7 @@ final class PhPackageTest {
     @Test
     void returnsLocator() {
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             new PhPackage(PhPackageTest.DEFAULT_PACKAGE).locator(),
             Matchers.equalTo("?:?:?")
         );

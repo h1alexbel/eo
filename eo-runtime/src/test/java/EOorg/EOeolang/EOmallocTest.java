@@ -9,14 +9,15 @@
  */
 package EOorg.EOeolang; // NOPMD
 
-import org.eolang.PhCompositeTest;
+import org.eolang.AtComposite;
+import org.eolang.AtCompositeTest;
+import org.eolang.AtVoid;
+import org.eolang.Attr;
 import org.eolang.Data;
 import org.eolang.Dataized;
 import org.eolang.ExAbstract;
-import org.eolang.PhComposite;
 import org.eolang.PhCopy;
 import org.eolang.PhDefault;
-import org.eolang.PhVoid;
 import org.eolang.PhWith;
 import org.eolang.Phi;
 import org.junit.jupiter.api.Assertions;
@@ -41,7 +42,7 @@ final class EOmallocTest {
         Assertions.assertThrows(
             ExAbstract.class,
             () -> Heaps.INSTANCE.free((int) dummy.id),
-            PhCompositeTest.TO_ADD_MESSAGE
+            AtCompositeTest.TO_ADD_MESSAGE
         );
     }
 
@@ -56,12 +57,12 @@ final class EOmallocTest {
                     dummy
                 )
             ).take(),
-            PhCompositeTest.TO_ADD_MESSAGE
+            AtCompositeTest.TO_ADD_MESSAGE
         );
         Assertions.assertThrows(
             ExAbstract.class,
             () -> Heaps.INSTANCE.free((int) dummy.id),
-            PhCompositeTest.TO_ADD_MESSAGE
+            AtCompositeTest.TO_ADD_MESSAGE
         );
     }
 
@@ -93,15 +94,19 @@ final class EOmallocTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         Dummy() {
-            this.add("m", new PhVoid("m"));
+            this.add("m", new AtVoid("m"));
             this.add(
 <<<<<<< HEAD
                 Phi.PHI,
+<<<<<<< HEAD
                 new PhComposite(
 =======
                 Attr.PHI,
                 new AtComposite(
 >>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+                new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
                     this,
                     rho -> {
                         this.id = new Dataized(
@@ -129,15 +134,19 @@ final class EOmallocTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         ErrorDummy() {
-            this.add("m", new PhVoid("m"));
+            this.add("m", new AtVoid("m"));
             this.add(
 <<<<<<< HEAD
                 Phi.PHI,
+<<<<<<< HEAD
                 new PhComposite(
 =======
                 Attr.PHI,
                 new AtComposite(
 >>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+                new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
                     this,
                     rho -> {
                         this.id = new Dataized(

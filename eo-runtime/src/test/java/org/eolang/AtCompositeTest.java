@@ -11,19 +11,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test case for {@link PhComposite}.
+ * Test case for {@link AtComposite}.
  *
  * @since 0.16
  */
 @SuppressWarnings("PMD.JUnit5TestShouldBePackagePrivate")
-public final class PhCompositeTest {
+public final class AtCompositeTest {
 
     /**
      * Empty message for JUnit Assertions.
      *
-     * @todo #2297:60m Replace all appearances of {@link PhCompositeTest#TO_ADD_MESSAGE} field in
+     * @todo #2297:60m Replace all appearances of {@link AtCompositeTest#TO_ADD_MESSAGE} field in
      *  eo-runtime with meaningful assert messages. Don't forget to remove
-     *  {@link PhCompositeTest#TO_ADD_MESSAGE} field and remove public modifier from this class if
+     *  {@link AtCompositeTest#TO_ADD_MESSAGE} field and remove public modifier from this class if
      *  no longer need.
      */
     public static final String TO_ADD_MESSAGE = "TO ADD ASSERTION MESSAGE";
@@ -32,13 +32,13 @@ public final class PhCompositeTest {
     void decoratesUncheckedException() {
         Assertions.assertThrows(
             IllegalStateException.class,
-            () -> new PhComposite(
+            () -> new AtComposite(
                 Phi.Φ,
                 self -> {
                     throw new IllegalStateException("intended unchecked");
                 }
-            ).copy(),
-            PhCompositeTest.TO_ADD_MESSAGE
+            ).get(),
+            AtCompositeTest.TO_ADD_MESSAGE
         );
     }
 
@@ -47,7 +47,7 @@ public final class PhCompositeTest {
         final Phi rnd = new Rnd();
         final Phi phi = new PhMethod(rnd, Attr.LAMBDA);
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             new Dataized(phi).asNumber(),
             Matchers.equalTo(
                 new Dataized(phi).asNumber()
@@ -69,11 +69,15 @@ public final class PhCompositeTest {
             this.add(
 <<<<<<< HEAD:eo-runtime/src/test/java/org/eolang/PhCompositeTest.java
                 Phi.LAMBDA,
+<<<<<<< HEAD:eo-runtime/src/test/java/org/eolang/PhCompositeTest.java
                 new PhComposite(
 =======
                 Attr.LAMBDA,
                 new AtComposite(
 >>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi):eo-runtime/src/test/java/org/eolang/AtCompositeTest.java
+=======
+                new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails):eo-runtime/src/test/java/org/eolang/AtCompositeTest.java
                     this,
                     rho -> new Data.ToPhi(new SecureRandom().nextDouble())
                 )

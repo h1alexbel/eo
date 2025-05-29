@@ -27,7 +27,7 @@ class JavaPathTest {
     })
     void convertsToString(final String name, final String expected) {
         MatcherAssert.assertThat(
-            PhCompositeTest.TO_ADD_MESSAGE,
+            AtCompositeTest.TO_ADD_MESSAGE,
             new JavaPath(name).toString(),
             Matchers.equalTo(expected)
         );

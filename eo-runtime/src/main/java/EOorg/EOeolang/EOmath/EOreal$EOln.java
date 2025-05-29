@@ -10,6 +10,7 @@
 package EOorg.EOeolang.EOmath; // NOPMD
 
 import org.eolang.Atom;
+import org.eolang.Attr;
 import org.eolang.Dataized;
 import org.eolang.PhDefault;
 import org.eolang.Phi;

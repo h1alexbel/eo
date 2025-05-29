@@ -11,6 +11,7 @@ package org.eolang;
  * @since 0.1
  */
 public interface Attr {
+<<<<<<< HEAD
     /**
      * Lambda attribute.
      */
@@ -25,6 +26,8 @@ public interface Attr {
      * Rho attribute.
      */
     String RHO = "ρ";
+=======
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
 
     /**
      * Make a copy of it.

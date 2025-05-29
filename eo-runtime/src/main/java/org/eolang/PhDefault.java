@@ -64,7 +64,7 @@ public class PhDefault implements Phi, Cloneable {
     /**
      * Attributes.
      */
-    private Map<String, Phi> attrs;
+    private Map<String, Attr> attrs;
 
     /**
      * Default ctor.
@@ -97,9 +97,9 @@ public class PhDefault implements Phi, Cloneable {
     public final Phi copy() {
         try {
             final PhDefault copy = (PhDefault) this.clone();
-            final Map<String, Phi> map = new HashMap<>(this.attrs.size());
-            for (final Map.Entry<String, Phi> ent : this.attrs.entrySet()) {
-                map.put(ent.getKey(), ent.getValue().copy());
+            final Map<String, Attr> map = new HashMap<>(this.attrs.size());
+            for (final Map.Entry<String, Attr> ent : this.attrs.entrySet()) {
+                map.put(ent.getKey(), ent.getValue().copy(copy));
             }
             copy.attrs = map;
             return copy;
@@ -113,10 +113,14 @@ public class PhDefault implements Phi, Cloneable {
         boolean has = true;
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.attrs.get(Phi.RHO).take(0);
 =======
             this.attrs.get(Attr.RHO).get();
 >>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+            this.attrs.get(Phi.RHO).get();
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
         } catch (final ExUnset exception) {
             has = false;
         }
@@ -126,7 +130,7 @@ public class PhDefault implements Phi, Cloneable {
     @Override
     public void put(final int pos, final Phi object) {
         final String name = this.attr(pos);
-        if (!(((PhiWithRho) this.attrs.get(name)).origin() instanceof PhVoid)) {
+        if (!(((AtWithRho) this.attrs.get(name)).origin() instanceof AtVoid)) {
             throw new ExReadOnly(
                 String.format(
                     "Can't put attribute with position %d because it's not void one",
@@ -147,7 +151,7 @@ public class PhDefault implements Phi, Cloneable {
                 )
             );
         }
-        this.attrs.get(name).put(name, object);
+        this.attrs.get(name).put(object);
     }
 
     @Override
@@ -156,7 +160,11 @@ public class PhDefault implements Phi, Cloneable {
         final Phi object;
         if (this.attrs.containsKey(name)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             object = this.attrs.get(name).take(name);
+=======
+            object = this.attrs.get(name).get();
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
         } else if (name.equals(Phi.LAMBDA)) {
 =======
             object = this.attrs.get(name).get();
@@ -252,11 +260,11 @@ public class PhDefault implements Phi, Cloneable {
      * @param name The name
      * @param attr The attr
      */
-    public final void add(final String name, final Phi attr) {
+    public final void add(final String name, final Attr attr) {
         if (PhDefault.SORTABLE.matcher(name).matches()) {
             this.order.put(this.order.size(), name);
         }
-        this.attrs.put(name, new PhiWithRho(attr, this));
+        this.attrs.put(name, new AtWithRho(attr, this));
     }
 
     /**
@@ -315,6 +323,7 @@ public class PhDefault implements Phi, Cloneable {
      * @return Default attributes hash map
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     private static Map<String, Phi> defaults() {
         final Map<String, Phi> attrs = new HashMap<>(0);
         attrs.put(Phi.RHO, new PhRho());
@@ -323,6 +332,11 @@ public class PhDefault implements Phi, Cloneable {
         final Map<String, Attr> attrs = new HashMap<>(0);
         attrs.put(Attr.RHO, new AtRho());
 >>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+    private static Map<String, Attr> defaults() {
+        final Map<String, Attr> attrs = new HashMap<>(0);
+        attrs.put(Phi.RHO, new AtRho());
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
         return attrs;
     }
 

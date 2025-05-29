@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @since 0.1
  */
-public final class PhVoid implements Phi {
+public final class AtVoid implements Attr {
     /**
      * Name of the attribute.
      */
@@ -30,7 +30,7 @@ public final class PhVoid implements Phi {
      * Ctor.
      * @param name The name of the attribute
      */
-    public PhVoid(final String name) {
+    public AtVoid(final String name) {
         this(name, null);
     }
 
@@ -39,13 +39,13 @@ public final class PhVoid implements Phi {
      * @param name Name of the attribute
      * @param phi Object
      */
-    private PhVoid(final String name, final Phi phi) {
+    private AtVoid(final String name, final Phi phi) {
         this.name = name;
         this.object = new AtomicReference<>(phi);
     }
 
     @Override
-    public Phi copy() {
+    public Attr copy(final Phi self) {
         final Phi obj = this.object.get();
         final Phi copy;
         if (obj == null) {
@@ -53,17 +53,12 @@ public final class PhVoid implements Phi {
         } else {
             copy = obj.copy();
         }
-        return new PhVoid(this.name, copy);
+        return new AtVoid(this.name, copy);
     }
 
     @Override
-    public boolean hasRho() {
-        return this.object.get().hasRho();
-    }
-
-    @Override
-    public Phi take(final String nme) {
-        final Phi phi = this.object.get().take(nme);
+    public Phi get() {
+        final Phi phi = this.object.get();
         if (phi == null) {
             throw new ExUnset(
                 String.format(
@@ -75,20 +70,7 @@ public final class PhVoid implements Phi {
     }
 
     @Override
-    public Phi take(final int pos) {
-        final Phi phi = this.object.get().take(pos);
-        if (phi == null) {
-            throw new ExUnset(
-                String.format(
-                    "The attribute \"%s\" is not initialized, can't read", this.name
-                )
-            );
-        }
-        return phi;
-    }
-
-    @Override
-    public void put(final int pos, final Phi phi) {
+    public void put(final Phi phi) {
         if (this.object.get() == null) {
             this.object.set(phi);
         } else {
@@ -99,34 +81,5 @@ public final class PhVoid implements Phi {
                 )
             );
         }
-    }
-
-    @Override
-    public void put(final String nme, final Phi phi) {
-        if (this.object.get() == null) {
-            this.object.set(phi);
-        } else {
-            throw new ExReadOnly(
-                String.format(
-                    "This void attribute \"%s\" is already set, can't reset",
-                    this.name
-                )
-            );
-        }
-    }
-
-    @Override
-    public String locator() {
-        return this.object.get().locator();
-    }
-
-    @Override
-    public String forma() {
-        return this.object.get().forma();
-    }
-
-    @Override
-    public byte[] delta() {
-        return this.object.get().delta();
     }
 }
