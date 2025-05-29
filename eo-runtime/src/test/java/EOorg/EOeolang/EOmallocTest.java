@@ -95,8 +95,13 @@ final class EOmallocTest {
         Dummy() {
             this.add("m", new PhVoid("m"));
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhComposite(
+=======
+                Attr.PHI,
+                new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                     this,
                     rho -> {
                         this.id = new Dataized(
@@ -126,8 +131,13 @@ final class EOmallocTest {
         ErrorDummy() {
             this.add("m", new PhVoid("m"));
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhComposite(
+=======
+                Attr.PHI,
+                new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                     this,
                     rho -> {
                         this.id = new Dataized(

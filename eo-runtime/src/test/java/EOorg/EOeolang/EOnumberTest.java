@@ -74,7 +74,7 @@ final class EOnumberTest {
                     new PhWith(
                         new PhWith(
                             (Phi) cls.getDeclaredConstructor().newInstance(),
-                            Phi.RHO,
+                            Attr.RHO,
                             new Data.ToPhi(42)
                         ),
                         "x",
@@ -104,7 +104,7 @@ final class EOnumberTest {
                 () -> new Dataized(
                     new PhWith(
                         (Phi) cls.getDeclaredConstructor().newInstance(),
-                        Phi.RHO,
+                        Attr.RHO,
                         new Data.ToPhi(true)
                     )
                 ).take(),

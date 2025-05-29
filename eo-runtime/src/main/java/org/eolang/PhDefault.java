@@ -31,7 +31,7 @@ public class PhDefault implements Phi, Cloneable {
      * Attribute name matcher.
      */
     private static final Pattern SORTABLE = Pattern.compile(
-        String.format("^([a-z].*)|%s$", Phi.PHI)
+        String.format("^([a-z].*)|%s$", Attr.PHI)
     );
 
     /**
@@ -112,7 +112,11 @@ public class PhDefault implements Phi, Cloneable {
     public boolean hasRho() {
         boolean has = true;
         try {
+<<<<<<< HEAD
             this.attrs.get(Phi.RHO).take(0);
+=======
+            this.attrs.get(Attr.RHO).get();
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         } catch (final ExUnset exception) {
             has = false;
         }
@@ -151,13 +155,18 @@ public class PhDefault implements Phi, Cloneable {
         PhDefault.NESTING.set(PhDefault.NESTING.get() + 1);
         final Phi object;
         if (this.attrs.containsKey(name)) {
+<<<<<<< HEAD
             object = this.attrs.get(name).take(name);
         } else if (name.equals(Phi.LAMBDA)) {
+=======
+            object = this.attrs.get(name).get();
+        } else if (name.equals(Attr.LAMBDA)) {
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
             object = new AtomSafe(this).lambda();
         } else if (this instanceof Atom) {
-            object = this.take(Phi.LAMBDA).take(name);
-        } else if (this.attrs.containsKey(Phi.PHI)) {
-            object = this.take(Phi.PHI).take(name);
+            object = this.take(Attr.LAMBDA).take(name);
+        } else if (this.attrs.containsKey(Attr.PHI)) {
+            object = this.take(Attr.PHI).take(name);
         } else {
             throw new ExUnset(
                 String.format(
@@ -166,8 +175,8 @@ public class PhDefault implements Phi, Cloneable {
                     this.attrs.size(),
                     this.forma(),
                     String.join(", ", this.attrs.keySet()),
-                    Phi.PHI,
-                    Phi.LAMBDA
+                    Attr.PHI,
+                    Attr.LAMBDA
                 )
             );
         }
@@ -195,9 +204,9 @@ public class PhDefault implements Phi, Cloneable {
         if (this.data.isPresent()) {
             bytes = this.data.get();
         } else if (this instanceof Atom) {
-            bytes = this.take(Phi.LAMBDA).delta();
-        } else if (this.attrs.containsKey(Phi.PHI)) {
-            bytes = this.take(Phi.PHI).delta();
+            bytes = this.take(Attr.LAMBDA).delta();
+        } else if (this.attrs.containsKey(Attr.PHI)) {
+            bytes = this.take(Attr.PHI).delta();
         } else {
             throw new ExFailure(
                 String.format(
@@ -305,9 +314,15 @@ public class PhDefault implements Phi, Cloneable {
      * Default attributes hash map with RHO attribute put.
      * @return Default attributes hash map
      */
+<<<<<<< HEAD
     private static Map<String, Phi> defaults() {
         final Map<String, Phi> attrs = new HashMap<>(0);
         attrs.put(Phi.RHO, new PhRho());
+=======
+    private static Map<String, Attr> defaults() {
+        final Map<String, Attr> attrs = new HashMap<>(0);
+        attrs.put(Attr.RHO, new AtRho());
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         return attrs;
     }
 

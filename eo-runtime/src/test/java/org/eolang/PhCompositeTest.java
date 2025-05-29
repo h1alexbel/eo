@@ -45,7 +45,7 @@ public final class PhCompositeTest {
     @Test
     void goesThroughJustOnce() {
         final Phi rnd = new Rnd();
-        final Phi phi = new PhMethod(rnd, Phi.LAMBDA);
+        final Phi phi = new PhMethod(rnd, Attr.LAMBDA);
         MatcherAssert.assertThat(
             PhCompositeTest.TO_ADD_MESSAGE,
             new Dataized(phi).asNumber(),
@@ -67,8 +67,13 @@ public final class PhCompositeTest {
         Rnd() {
             super();
             this.add(
+<<<<<<< HEAD:eo-runtime/src/test/java/org/eolang/PhCompositeTest.java
                 Phi.LAMBDA,
                 new PhComposite(
+=======
+                Attr.LAMBDA,
+                new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi):eo-runtime/src/test/java/org/eolang/AtCompositeTest.java
                     this,
                     rho -> new Data.ToPhi(new SecureRandom().nextDouble())
                 )

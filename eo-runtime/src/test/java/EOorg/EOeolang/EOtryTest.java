@@ -125,8 +125,13 @@ final class EOtryTest {
         MainWithCounter() {
             super();
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhComposite(
+=======
+                Attr.PHI,
+                new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                     this,
                     rho -> {
                         ++this.count;

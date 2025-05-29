@@ -61,8 +61,8 @@ final class PhDefaultTest {
         final Phi phi = new PhSafe(new PhDefaultTest.Int());
         Assertions.assertThrows(
             ExAbstract.class,
-            () -> phi.take(Phi.RHO),
-            String.format("Object should not have %s attribute when it's just formed", Phi.RHO)
+            () -> phi.take(Attr.RHO),
+            String.format("Object should not have %s attribute when it's just formed", Attr.RHO)
         );
     }
 
@@ -70,8 +70,8 @@ final class PhDefaultTest {
     void setsRhoAfterDispatch() {
         final Phi kid = new PhDefaultTest.Int().take(PhDefaultTest.PLUS_ATT);
         Assertions.assertDoesNotThrow(
-            () -> kid.take(Phi.RHO),
-            String.format("Kid of should have %s attribute after dispatch", Phi.RHO)
+            () -> kid.take(Attr.RHO),
+            String.format("Kid of should have %s attribute after dispatch", Attr.RHO)
         );
     }
 
@@ -80,8 +80,8 @@ final class PhDefaultTest {
         final Phi phi = new PhSafe(new PhDefaultTest.Int().copy());
         Assertions.assertThrows(
             ExAbstract.class,
-            () -> phi.take(Phi.RHO),
-            String.format("Object should not give %s attribute after copying", Phi.RHO)
+            () -> phi.take(Attr.RHO),
+            String.format("Object should not give %s attribute after copying", Attr.RHO)
         );
     }
 
@@ -116,18 +116,18 @@ final class PhDefaultTest {
         final Phi phi = new PhDefaultTest.Int().copy();
         final Phi plus = phi.take(PhDefaultTest.PLUS_ATT);
         Assertions.assertDoesNotThrow(
-            () -> plus.take(Phi.RHO),
+            () -> plus.take(Attr.RHO),
             String.format(
                 "Child object should get %s attribute after copying main object",
-                Phi.RHO
+                Attr.RHO
             )
         );
         MatcherAssert.assertThat(
             String.format(
                 "%s attribute of copied child object should be equal to copied main object",
-                Phi.RHO
+                Attr.RHO
             ),
-            plus.take(Phi.RHO),
+            plus.take(Attr.RHO),
             Matchers.equalTo(phi)
         );
     }
@@ -152,17 +152,17 @@ final class PhDefaultTest {
         final Phi copy = phi.copy();
         MatcherAssert.assertThat(
             String.format(
-                "%s attribute of original object kid should refer to original object", Phi.RHO
+                "%s attribute of original object kid should refer to original object", Attr.RHO
             ),
-            phi.take(PhDefaultTest.PLUS_ATT).take(Phi.RHO),
-            Matchers.not(Matchers.equalTo(copy.take(PhDefaultTest.PLUS_ATT).take(Phi.RHO)))
+            phi.take(PhDefaultTest.PLUS_ATT).take(Attr.RHO),
+            Matchers.not(Matchers.equalTo(copy.take(PhDefaultTest.PLUS_ATT).take(Attr.RHO)))
         );
         MatcherAssert.assertThat(
             String.format(
                 "%s attribute of copied object kid should refer to copied object",
-                Phi.RHO
+                Attr.RHO
             ),
-            copy.take(PhDefaultTest.PLUS_ATT).take(Phi.RHO),
+            copy.take(PhDefaultTest.PLUS_ATT).take(Attr.RHO),
             Matchers.equalTo(copy)
         );
     }
@@ -175,11 +175,11 @@ final class PhDefaultTest {
         MatcherAssert.assertThat(
             String.format(
                 "%s attribute of kid attribute should not be changed after direct copying",
-                Phi.RHO
+                Attr.RHO
             ),
-            first.take(Phi.RHO),
+            first.take(Attr.RHO),
             Matchers.equalTo(
-                second.take(Phi.RHO)
+                second.take(Attr.RHO)
             )
         );
     }
@@ -189,9 +189,9 @@ final class PhDefaultTest {
         final Phi phi = new PhDefaultTest.Int();
         final Phi plus = phi.take(PhDefaultTest.PLUS_ATT);
         MatcherAssert.assertThat(
-            String.format("%s attributes should not be copied while dispatch", Phi.RHO),
-            plus.take(Phi.RHO),
-            Matchers.equalTo(plus.take(Phi.RHO))
+            String.format("%s attributes should not be copied while dispatch", Attr.RHO),
+            plus.take(Attr.RHO),
+            Matchers.equalTo(plus.take(Attr.RHO))
         );
     }
 
@@ -246,6 +246,7 @@ final class PhDefaultTest {
         final Phi phi = new PhSafe(new PhDefaultTest.Int().copy());
         Assertions.assertThrows(
             ExAbstract.class,
+<<<<<<< HEAD
             () -> phi.take(Phi.PHI),
             PhCompositeTest.TO_ADD_MESSAGE
         );
@@ -253,6 +254,15 @@ final class PhDefaultTest {
         Assertions.assertDoesNotThrow(
             () -> phi.take(Phi.PHI),
             PhCompositeTest.TO_ADD_MESSAGE
+=======
+            () -> phi.take(Attr.PHI),
+            AtCompositeTest.TO_ADD_MESSAGE
+        );
+        phi.put(PhDefaultTest.VOID_ATT, new Data.ToPhi(10L));
+        Assertions.assertDoesNotThrow(
+            () -> phi.take(Attr.PHI),
+            AtCompositeTest.TO_ADD_MESSAGE
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         );
     }
 
@@ -260,10 +270,10 @@ final class PhDefaultTest {
     void hasContextedChildWithSetRhoWhenFormed() {
         final Phi phi = new PhDefaultTest.Int();
         Assertions.assertDoesNotThrow(
-            () -> phi.take("context").take(Phi.RHO),
+            () -> phi.take("context").take(Attr.RHO),
             String.format(
                 "Contexted attribute should already have %s attribute",
-                Phi.RHO
+                Attr.RHO
             )
         );
     }
@@ -516,9 +526,15 @@ final class PhDefaultTest {
             this.add(PhDefaultTest.VOID_ATT, new PhVoid(PhDefaultTest.VOID_ATT));
             this.add(PhDefaultTest.PLUS_ATT, new AtSimple(new PhDefault()));
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhaOnce(
                     new PhComposite(
+=======
+                Attr.PHI,
+                new AtOnce(
+                    new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                         this,
                         rho -> rho.take(PhDefaultTest.VOID_ATT)
                     )
@@ -568,7 +584,11 @@ final class PhDefaultTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         WithVoidPhi() {
+<<<<<<< HEAD
             this.add(Phi.PHI, new PhVoid(Phi.PHI));
+=======
+            this.add(Attr.PHI, new AtVoid(Attr.PHI));
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         }
     }
 
@@ -588,9 +608,15 @@ final class PhDefaultTest {
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         Counter() {
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhaOnce(
                     new PhComposite(
+=======
+                Attr.PHI,
+                new AtOnce(
+                    new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                         this,
                         rho -> {
                             ++this.count;
@@ -613,8 +639,13 @@ final class PhDefaultTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         Kid() {
+<<<<<<< HEAD
             this.add("z", new PhVoid("z"));
             this.add(Phi.PHI, new AtSimple(new Data.ToPhi(true)));
+=======
+            this.add("z", new AtVoid("z"));
+            this.add(Attr.PHI, new AtSimple(new Data.ToPhi(true)));
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         }
     }
 
@@ -634,8 +665,13 @@ final class PhDefaultTest {
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         EndlessRecursion() {
             this.add(
+<<<<<<< HEAD
                 Phi.PHI,
                 new PhComposite(
+=======
+                Attr.PHI,
+                new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
                     this,
                     self -> {
                         --PhDefaultTest.EndlessRecursion.count;
