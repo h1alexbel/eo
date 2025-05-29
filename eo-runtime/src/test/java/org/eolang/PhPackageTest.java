@@ -70,8 +70,17 @@ final class PhPackageTest {
         final Phi eolang = Phi.Φ.take("org.eolang");
         final Phi seq = eolang.take("seq");
         MatcherAssert.assertThat(
+<<<<<<< HEAD
+<<<<<<< HEAD
+            PhCompositeTest.TO_ADD_MESSAGE,
+=======
+            AtCompositeTest.TO_ADD_MESSAGE,
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
+            seq.take(Phi.RHO),
+=======
             AtCompositeTest.TO_ADD_MESSAGE,
             seq.take(Attr.RHO),
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
             Matchers.equalTo(eolang)
         );
     }

@@ -246,6 +246,16 @@ final class PhDefaultTest {
         final Phi phi = new PhSafe(new PhDefaultTest.Int().copy());
         Assertions.assertThrows(
             ExAbstract.class,
+<<<<<<< HEAD
+            () -> phi.take(Phi.PHI),
+            AtCompositeTest.TO_ADD_MESSAGE
+        );
+        phi.put(PhDefaultTest.VOID_ATT, new Data.ToPhi(10L));
+        Assertions.assertDoesNotThrow(
+            () -> phi.take(Phi.PHI),
+<<<<<<< HEAD
+            PhCompositeTest.TO_ADD_MESSAGE
+=======
             () -> phi.take(Attr.PHI),
             AtCompositeTest.TO_ADD_MESSAGE
         );
@@ -253,6 +263,10 @@ final class PhDefaultTest {
         Assertions.assertDoesNotThrow(
             () -> phi.take(Attr.PHI),
             AtCompositeTest.TO_ADD_MESSAGE
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+            AtCompositeTest.TO_ADD_MESSAGE
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
         );
     }
 
@@ -516,9 +530,20 @@ final class PhDefaultTest {
             this.add(PhDefaultTest.VOID_ATT, new AtVoid(PhDefaultTest.VOID_ATT));
             this.add(PhDefaultTest.PLUS_ATT, new AtSimple(new PhDefault()));
             this.add(
+<<<<<<< HEAD
+                Phi.PHI,
+<<<<<<< HEAD
+                new PhaOnce(
+                    new PhComposite(
+=======
                 Attr.PHI,
                 new AtOnce(
                     new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+                new AtOnce(
+                    new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
                         this,
                         rho -> rho.take(PhDefaultTest.VOID_ATT)
                     )
@@ -568,7 +593,15 @@ final class PhDefaultTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         WithVoidPhi() {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.add(Phi.PHI, new PhVoid(Phi.PHI));
+=======
             this.add(Attr.PHI, new AtVoid(Attr.PHI));
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+            this.add(Phi.PHI, new AtVoid(Phi.PHI));
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
         }
     }
 
@@ -588,9 +621,20 @@ final class PhDefaultTest {
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         Counter() {
             this.add(
+<<<<<<< HEAD
+                Phi.PHI,
+<<<<<<< HEAD
+                new PhaOnce(
+                    new PhComposite(
+=======
                 Attr.PHI,
                 new AtOnce(
                     new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+                new AtOnce(
+                    new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
                         this,
                         rho -> {
                             ++this.count;
@@ -613,8 +657,17 @@ final class PhDefaultTest {
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         Kid() {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.add("z", new PhVoid("z"));
+=======
+            this.add("z", new AtVoid("z"));
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
+            this.add(Phi.PHI, new AtSimple(new Data.ToPhi(true)));
+=======
             this.add("z", new AtVoid("z"));
             this.add(Attr.PHI, new AtSimple(new Data.ToPhi(true)));
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
         }
     }
 
@@ -634,8 +687,17 @@ final class PhDefaultTest {
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         EndlessRecursion() {
             this.add(
+<<<<<<< HEAD
+                Phi.PHI,
+<<<<<<< HEAD
+                new PhComposite(
+=======
                 Attr.PHI,
                 new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi)
+=======
+                new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails)
                     this,
                     self -> {
                         --PhDefaultTest.EndlessRecursion.count;

@@ -67,8 +67,17 @@ public final class AtCompositeTest {
         Rnd() {
             super();
             this.add(
+<<<<<<< HEAD:eo-runtime/src/test/java/org/eolang/PhCompositeTest.java
+                Phi.LAMBDA,
+<<<<<<< HEAD:eo-runtime/src/test/java/org/eolang/PhCompositeTest.java
+                new PhComposite(
+=======
                 Attr.LAMBDA,
                 new AtComposite(
+>>>>>>> parent of c83b2a697 (bug(#3480): specials to Phi):eo-runtime/src/test/java/org/eolang/AtCompositeTest.java
+=======
+                new AtComposite(
+>>>>>>> parent of 0ffc35622 (bug(#3480): fails):eo-runtime/src/test/java/org/eolang/AtCompositeTest.java
                     this,
                     rho -> new Data.ToPhi(new SecureRandom().nextDouble())
                 )
