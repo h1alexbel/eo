@@ -18,7 +18,6 @@ asserts:
   - //o[@base='Q.org.eolang.txt.scanner']
   - //o[@base='Q.org.eolang.io.stdout']
   - //o[@base='and']
-  - //o[@base='ξ']
   - //o[@base='ρ']
   - //o[@base='Q.org.eolang.txt.regex']
   - //o[@base='Q.org.d']
@@ -39,6 +38,6 @@ input: |
       (scanner stdin).next-line > line!
       (stdout "You entered" line).print
       ^.x
-      $
+      main
       custom 5
       a

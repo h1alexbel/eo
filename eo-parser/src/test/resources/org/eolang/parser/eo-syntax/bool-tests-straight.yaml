@@ -121,7 +121,7 @@ input: |
           .eolang
           .bytes:0
             00-00-00-00-00-00-00-00
-      $
+      bool
       .x
       .write
         Q
@@ -144,7 +144,7 @@ input: |
           .bytes:0
             00-00-00-00-00-00-00-05
       .and > @
-        $
+        bool
         .x
         .as-int
         .lt
@@ -159,11 +159,11 @@ input: |
               00-00-00-00-00-00-00-0A
         .while
           [i]:0
-            $
+            bool
             .^
             .x
             .write > @
-              $
+              bool
               .^
               .x
               .as-int

@@ -248,7 +248,7 @@ vapplicationHead
 
 // Compact arrays
 compactArray
-    : (XI | HOME | NAME) (DOT NAME)* SPACE STAR INT?
+    : (HOME | NAME) (DOT NAME)* SPACE STAR INT?
     ;
 
 // Vertical application arguments
@@ -412,7 +412,6 @@ beginner
     : STAR
     | ROOT
     | HOME
-    | XI
     | data
     ;
 
@@ -509,8 +508,6 @@ COLON
     ;
 ARROW
     : '>'
-    ;
-XI  : '$'
     ;
 PLUS: '+'
     ;

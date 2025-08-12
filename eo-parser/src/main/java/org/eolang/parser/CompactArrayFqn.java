@@ -51,12 +51,6 @@ final class CompactArrayFqn implements Text {
         } else {
             fqn = String.format("Q.org.eolang.%s", name);
         }
-        final String base;
-        if (this.context.XI() == null) {
-            base = fqn;
-        } else {
-            base = String.format("ξ.%s", fqn);
-        }
-        return base;
+        return fqn;
     }
 }

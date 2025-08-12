@@ -14,7 +14,6 @@ asserts:
   - /object[count(o)=1]
   - //o[@base='Q.org.eolang.and']
   - //o[@base='Q.foo']
-  - //o[@base='ξ']
   - //o[@base='ρ']
   - //o[@base='Q']
   - /object/metas/meta[head='also' and tail='Q.org.eolang.number' and part='Q.org.eolang.number']
@@ -36,7 +35,7 @@ input: |
     and > @
       (scanner stdin).next-line > line!
       (stdout "You entered" line).print
-      $
+      main
       ^.i
       foo
       Q.org.eolang.random
