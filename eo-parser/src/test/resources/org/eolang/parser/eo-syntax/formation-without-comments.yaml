@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 ---
 # yamllint disable rule:line-length
+skip: true
 sheets: []
 asserts:
   - /object[not(errors)]

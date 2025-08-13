@@ -18,7 +18,7 @@ asserts:
   - //o[not(@base) and @loc='Φ.org.abc.main.tt.α2' and @original-name='main.tt.α2']
   - //o[@base='∅' and @name='e' and @loc='Φ.org.abc.main.tt.α2.e' and @original-name='main.tt.α2.e']
   - //o[@base='ξ.e.hello' and @loc='Φ.org.abc.main.tt.α2.φ' and @original-name='main.tt.α2.φ']
-  - //o[@base='ξ.ρ.ρ.p' and @loc='Φ.org.abc.main.q' and @original-name='main.q']
+  - //o[@base='Φ.org.eolang.p' and @loc='Φ.org.abc.main.q' and @original-name='main.q']
 input: |
   +alias org.abc.foo.b
   +alias x
@@ -40,4 +40,4 @@ input: |
         6.2
       [e]
         e.hello > @
-    $.^.^.p > q
+    p > q
