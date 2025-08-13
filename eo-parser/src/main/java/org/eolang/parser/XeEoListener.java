@@ -108,9 +108,9 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
                 .add("head").set(head).up()
                 .add("tail");
             if (pair.length > 1) {
-                this.dirs.set(pair[1].trim()).up();
+                this.dirs.set(XeEoListener.qqToGlobalPhi(pair[1].trim())).up();
                 for (final String part : pair[1].trim().split(" ")) {
-                    this.dirs.add("part").set(part).up();
+                    this.dirs.add("part").set(XeEoListener.qqToGlobalPhi(part)).up();
                 }
             } else {
                 this.dirs.up();
@@ -142,16 +142,6 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
 
     @Override
     public void exitCommentOptional(final EoParser.CommentOptionalContext ctx) {
-        // Nothing here
-    }
-
-    @Override
-    public void enterCommentMandatory(final EoParser.CommentMandatoryContext ctx) {
-        this.putComment(ctx.comment(), ctx.getStop());
-    }
-
-    @Override
-    public void exitCommentMandatory(final EoParser.CommentMandatoryContext ctx) {
         // Nothing here
     }
 
@@ -451,7 +441,7 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
         this.objects.start(ctx);
         final String base;
         if (ctx.STAR() != null) {
-            base = "Q.org.eolang.tuple";
+            base = "Φ.org.eolang.tuple";
             this.objects.prop("star");
         } else if (ctx.NAME() != null) {
             base = ctx.NAME().getText();
@@ -862,13 +852,15 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
         this.objects.start(ctx);
         if (ctx.data() == null) {
             final String base;
-            if (ctx.STAR() != null) {
-                base = "Q.org.eolang.tuple";
+            if (ctx.XI() != null) {
+                base = "ξ";
+            } else if (ctx.STAR() != null) {
+                base = "Φ.org.eolang.tuple";
                 this.objects.prop("star");
             } else if (ctx.ROOT() != null) {
-                base = "Q";
+                base = "Φ";
             } else if (ctx.HOME() != null) {
-                base = "QQ";
+                base = "Φ̇";
             } else {
                 base = "";
             }
@@ -1058,7 +1050,7 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
         final String text = ctx.getText();
         if (ctx.BYTES() != null) {
             this.objects
-                .prop("base", "Q.org.eolang.bytes")
+                .prop("base", "Φ.org.eolang.bytes")
                 .start(ctx)
                 .data(text.replaceAll("\\s+", "").trim())
                 .leave();
@@ -1066,7 +1058,7 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
             final Supplier<String> data;
             final String base;
             if (ctx.FLOAT() != null || ctx.INT() != null) {
-                base = "Q.org.eolang.number";
+                base = "Φ.org.eolang.number";
                 data = new BytesToHex(
                     ByteBuffer
                         .allocate(Double.BYTES)
@@ -1074,7 +1066,7 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
                         .array()
                 );
             } else if (ctx.HEX() != null) {
-                base = "Q.org.eolang.number";
+                base = "Φ.org.eolang.number";
                 data = new BytesToHex(
                     ByteBuffer
                         .allocate(Double.BYTES)
@@ -1082,14 +1074,14 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
                         .array()
                 );
             } else if (ctx.STRING() != null) {
-                base = "Q.org.eolang.string";
+                base = "Φ.org.eolang.string";
                 data = new BytesToHex(
                     StringEscapeUtils.unescapeJava(
                         text.substring(1, text.length() - 1)
                     ).getBytes(StandardCharsets.UTF_8)
                 );
             } else {
-                base = "Q.org.eolang.string";
+                base = "Φ.org.eolang.string";
                 final int indent = ctx.getStart().getCharPositionInLine();
                 data = new BytesToHex(
                     StringEscapeUtils.unescapeJava(
@@ -1100,7 +1092,7 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
             this.objects
                 .prop("base", base)
                 .start(ctx)
-                .prop("base", "Q.org.eolang.bytes")
+                .prop("base", "Φ.org.eolang.bytes")
                 .start(ctx)
                 .data(data.get())
                 .leave()
@@ -1248,6 +1240,23 @@ final class XeEoListener implements EoListener, Iterable<Directive> {
             result = ctx.method().getText();
         } else {
             result = ctx.just().getText();
+        }
+        return result;
+    }
+
+    /**
+     * Translate FQN starting with `Q` or `QQ` to the one starting with a global Phi object.
+     * @param fqn FQN
+     * @return Translated FQN.
+     */
+    private static String qqToGlobalPhi(final String fqn) {
+        final String result;
+        if (fqn.startsWith("QQ")) {
+            result = String.format("Φ̇%s", fqn.substring(2));
+        } else if (!fqn.startsWith("QQ") && !fqn.isEmpty() && fqn.charAt(0) == 'Q') {
+            result = String.format("Φ%s", fqn.substring(1));
+        } else {
+            result = fqn;
         }
         return result;
     }

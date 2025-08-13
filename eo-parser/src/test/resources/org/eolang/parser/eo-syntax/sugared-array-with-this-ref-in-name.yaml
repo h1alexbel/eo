@@ -5,11 +5,11 @@
 sheets: []
 asserts:
   - /object[not(errors)]
-  - //o[@base='.first' and @name='m']/o[1][not(@base) and not(@name) and o[@base='Φ.org.eolang.y']/o[@base='.second']/o[not(@base) and not(@name)]]
+  - //o[@base='ξ.seq']/o[@base='Φ.org.eolang.x']
+  - //o[@base='ξ.seq']//o[@base='Φ.org.eolang.y']
 input: |
   # No comments.
-  []
-    y > @
-      []
-      .second
-  .first > m
+  [] > app
+    $.seq *1 > @
+      x
+      y
