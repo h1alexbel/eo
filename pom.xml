@@ -137,32 +137,32 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.11.4</version>
+        <version>6.0.0</version>
         <type>pom</type>
-        <scope>test</scope>
+        <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-launcher</artifactId>
-        <version>5.11.4</version>
+        <version>6.0.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.11.4</version>
+        <version>6.0.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-params</artifactId>
-        <version>5.11.4</version>
+        <version>6.0.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>5.11.4</version>
+        <version>6.0.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -400,6 +400,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.4</version>
           <configuration>
             <skipTests>${skipUTs}</skipTests>
             <systemPropertyVariables>
